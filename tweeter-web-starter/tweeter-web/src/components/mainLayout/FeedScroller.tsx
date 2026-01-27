@@ -10,6 +10,7 @@ import { ToastActionsContext } from "../toaster/ToastContexts";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ToastType } from "../toaster/Toast";
 import Post from "../statusItem/Post";
+import StatusItem from "../statusItem/StatusItem";
 
 export const PAGE_SIZE = 10;
 
@@ -135,6 +136,7 @@ const FeedScroller = () => {
             key={index}
             className="row mb-3 mx-0 px-0 border rounded bg-white"
           >
+            <StatusItem status={item}/>
             <div className="col bg-light mx-0 px-0">
               <div className="container px-0">
                 <div className="row mx-0 px-0">
