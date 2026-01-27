@@ -9,6 +9,7 @@ import { ToastActionsContext } from "../toaster/ToastContexts";
 
 interface Props {
         status: Status;
+        featureUrl: string;
 }
 
 const StatusItem = (props: Props) => {
@@ -28,7 +29,7 @@ const StatusItem = (props: Props) => {
             if (toUser) {
             if (!toUser.equals(displayedUser!)) {
                 setDisplayedUser(toUser);
-                navigate(`/feed/${toUser.alias}`);
+                navigate(`${props.featureUrl}/${toUser.alias}`);
             }
             }
         } catch (error) {
