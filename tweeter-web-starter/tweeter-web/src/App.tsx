@@ -15,6 +15,8 @@ import { AuthToken } from "tweeter-shared/dist/model/domain/AuthToken";
 import { Status, FakeData, User } from "tweeter-shared";
 import UserItemScroller from "./components/mainLayout/UserItemScroller";
 import { useUserInfo } from "./components/userInfo/UserHooks";
+import { FolloweePresenter } from "./presenter/FolloweePresenter";
+import { FollowerPresenter } from "./presenter/FollowerPresenter";
 
 const App = () => {
   const { currentUser, authToken } = useUserInfo();
@@ -57,26 +59,6 @@ const loadMoreFeedItems = async (
   return FakeData.instance.getPageOfStatuses(lastItem, pageSize);
 };
 
-const loadMoreFollowees = async (
-    authToken: AuthToken,
-    userAlias: string,
-    pageSize: number,
-    lastItem: User | null
-): Promise<[User[], boolean]> => {
-// TODO: Replace with the result of calling server
-    return FakeData.instance.getPageOfUsers(lastItem, pageSize, userAlias);
-};
-
-const loadMoreFollowers = async (
-    authToken: AuthToken,
-    userAlias: string,
-    pageSize: number,
-    lastItem: User | null
-): Promise<[User[], boolean]> => {
-// TODO: Replace with the result of calling server
-    return FakeData.instance.getPageOfUsers(lastItem, pageSize, userAlias);
-};
-
 const AuthenticatedRoutes = () => {
   const { displayedUser } = useUserInfo();
 
@@ -86,8 +68,8 @@ const AuthenticatedRoutes = () => {
         <Route index element={<Navigate to={`/feed/${displayedUser!.alias}`} />} />
         <Route path="feed/:displayedUser" element={<StatusItemScroller key={`feed-${displayedUser!.alias}`} itemDescription="feed" featureUrl="/feed" loadMore={loadMoreFeedItems} />} />
         <Route path="story/:displayedUser" element={<StatusItemScroller key={`story-${displayedUser!.alias}`} itemDescription="story" featureUrl="/story" loadMore={loadMoreStoryItems} />} />
-        <Route path="followees/:displayedUser" element={<UserItemScroller key={`followees-${displayedUser!.alias}`} itemDescription="followees" featureUrl="/followees" loadMore={loadMoreFollowees} />} />
-        <Route path="followers/:displayedUser" element={<UserItemScroller key={`followers-${displayedUser!.alias}`} itemDescription="followers" featureUrl="/followers" loadMore={loadMoreFollowers} />} />
+        <Route path="followees/:displayedUser" element={<UserItemScroller key={`followees-${displayedUser!.alias}`} featureUrl="/followees" presenterFactory={(view) => new FolloweePresenter(view)} />} />
+        <Route path="followers/:displayedUser" element={<UserItemScroller key={`followers-${displayedUser!.alias}`} featureUrl="/followers" presenterFactory={(view) => new FollowerPresenter(view)} />} />
         <Route path="logout" element={<Navigate to="/login" />} />
         <Route path="*" element={<Navigate to={`/feed/${displayedUser!.alias}`} />} />
       </Route>
