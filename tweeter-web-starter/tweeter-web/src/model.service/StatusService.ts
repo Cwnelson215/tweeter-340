@@ -1,28 +1,35 @@
-import { AuthToken, Status } from "tweeter-shared";
+import { AuthToken, FakeData, Status } from "tweeter-shared";
 
 export class StatusService {
-    static PAGE_SIZE = 10;
 
-    static async loadMoreStatuses (
+    public async loadMoreFeedItems(
         authToken: AuthToken,
         userAlias: string,
-        lastStatus: Status | null
+        pageSize: number,
+        lastItem: Status | null
     ): Promise<[Status[], boolean]> {
-        const response = await fetch(
-            `/api/statuses?userAlias=${userAlias}&lastStatusId=${lastStatus || ''}&pageSize=${this.PAGE_SIZE}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${authToken.token}`
-                }
-            }
-        );
+        // TODO: Replace with the result of calling server
+        return FakeData.instance.getPageOfStatuses(lastItem, pageSize);
+    };
 
-        if (!response.ok) {
-            throw new Error(`Failed to load statuses: ${response.statusText}`);
-        }
+    public async loadMoreStoryItems(
+        authToken: AuthToken,
+        userAlias: string,
+        pageSize: number,
+        lastItem: Status | null
+    ): Promise<[Status[], boolean]> {
+        // TODO: Replace with the result of calling server
+        return FakeData.instance.getPageOfStatuses(lastItem, pageSize);
+    };
 
-        const data = await response.json();
-        return [data.statuses, data.hasMore];
-    }
+    public async postStatus(
+        authToken: AuthToken,
+        newStatus: Status
+    ): Promise<void> {
+        // Pause so we can see the logging out message. Remove when connected to the server
+        await new Promise((f) => setTimeout(f, 2000));
+
+        // TODO: Call the server to post the status
+    };
 
 }
