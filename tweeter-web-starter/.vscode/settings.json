@@ -1,0 +1,4 @@
+{
+  "jest.rootPath": "tweeter-web",
+  "jest.jestCommandLine": "npx jest --config jest.config.cjs"
+}
