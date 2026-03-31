@@ -3,12 +3,13 @@ import {
   PagedStatusItemResponse,
 } from "tweeter-shared";
 import { StatusService } from "../model/service/StatusService";
+import { DynamoDAOFactory } from "../model/dao/dynamodb/DynamoDAOFactory";
 
 export const handler = async (
   event: PagedStatusItemRequest
 ): Promise<PagedStatusItemResponse> => {
   try {
-    const statusService = new StatusService();
+    const statusService = new StatusService(new DynamoDAOFactory());
     const [items, hasMore] = await statusService.loadMoreFeedItems(
       event.token,
       event.userAlias,

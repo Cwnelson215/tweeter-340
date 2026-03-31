@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PostStatus UML Sequence Diagram</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #fff;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>UML Sequence Diagram: Post Status (Success)</h1>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 920" width="1300" height="920">
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+      </marker>
+      <marker id="arrowLeft" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+        <polygon points="10 0, 0 3.5, 10 7" fill="#999"/>
+      </marker>
+    </defs>
+
+    <!-- Actor/Object boxes -->
+    <!-- PostStatus Component -->
+    <rect x="20" y="10" width="140" height="40" rx="4" fill="#d4e6f1" stroke="#333" stroke-width="1.5"/>
+    <text x="90" y="35" text-anchor="middle" font-size="12" font-weight="bold">PostStatus</text>
+    <text x="90" y="48" text-anchor="middle" font-size="9" fill="#666">(Component)</text>
+
+    <!-- PostStatusPresenter -->
+    <rect x="195" y="10" width="140" height="40" rx="4" fill="#d4e6f1" stroke="#333" stroke-width="1.5"/>
+    <text x="265" y="35" text-anchor="middle" font-size="12" font-weight="bold">PostStatusPresenter</text>
+
+    <!-- StatusService (Client) -->
+    <rect x="370" y="10" width="140" height="40" rx="4" fill="#d4e6f1" stroke="#333" stroke-width="1.5"/>
+    <text x="440" y="30" text-anchor="middle" font-size="12" font-weight="bold">StatusService</text>
+    <text x="440" y="44" text-anchor="middle" font-size="10" fill="#666">(Client)</text>
+
+    <!-- ServerFacade -->
+    <rect x="545" y="10" width="140" height="40" rx="4" fill="#d4e6f1" stroke="#333" stroke-width="1.5"/>
+    <text x="615" y="35" text-anchor="middle" font-size="12" font-weight="bold">ServerFacade</text>
+
+    <!-- ClientCommunicator -->
+    <rect x="720" y="10" width="150" height="40" rx="4" fill="#d4e6f1" stroke="#333" stroke-width="1.5"/>
+    <text x="795" y="35" text-anchor="middle" font-size="12" font-weight="bold">ClientCommunicator</text>
+
+    <!-- API Gateway -->
+    <rect x="905" y="10" width="130" height="40" rx="4" fill="#fdebd0" stroke="#e67e22" stroke-width="1.5"/>
+    <text x="970" y="35" text-anchor="middle" font-size="12" font-weight="bold">API Gateway</text>
+
+    <!-- PostStatusLambda -->
+    <rect x="1060" y="10" width="130" height="40" rx="4" fill="#d5f5e3" stroke="#27ae60" stroke-width="1.5"/>
+    <text x="1125" y="30" text-anchor="middle" font-size="12" font-weight="bold">PostStatusLambda</text>
+    <text x="1125" y="44" text-anchor="middle" font-size="10" fill="#666">(Handler)</text>
+
+    <!-- StatusService (Server) -->
+    <rect x="1205" y="10" width="80" height="40" rx="4" fill="#d5f5e3" stroke="#27ae60" stroke-width="1.5"/>
+    <text x="1245" y="30" text-anchor="middle" font-size="11" font-weight="bold">Status</text>
+    <text x="1245" y="43" text-anchor="middle" font-size="11" font-weight="bold">Service</text>
+    <text x="1245" y="55" text-anchor="middle" font-size="9" fill="#666">(Server)</text>
+
+    <!-- Lifelines -->
+    <line x1="90" y1="55" x2="90" y2="900" stroke="#bbb" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="265" y1="55" x2="265" y2="900" stroke="#bbb" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="440" y1="55" x2="440" y2="900" stroke="#bbb" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="615" y1="55" x2="615" y2="900" stroke="#bbb" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="795" y1="55" x2="795" y2="900" stroke="#bbb" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="970" y1="55" x2="970" y2="900" stroke="#bbb" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="1125" y1="55" x2="1125" y2="900" stroke="#bbb" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="1245" y1="55" x2="1245" y2="900" stroke="#bbb" stroke-width="1" stroke-dasharray="5,5"/>
+
+    <!-- Activation bars -->
+    <!-- PostStatus -->
+    <rect x="85" y="80" width="10" height="800" fill="#d4e6f1" stroke="#333" stroke-width="1"/>
+    <!-- Presenter -->
+    <rect x="260" y="100" width="10" height="740" fill="#d4e6f1" stroke="#333" stroke-width="1"/>
+    <!-- StatusService Client -->
+    <rect x="435" y="320" width="10" height="310" fill="#d4e6f1" stroke="#333" stroke-width="1"/>
+    <!-- ServerFacade -->
+    <rect x="610" y="360" width="10" height="240" fill="#d4e6f1" stroke="#333" stroke-width="1"/>
+    <!-- ClientCommunicator -->
+    <rect x="790" y="400" width="10" height="160" fill="#d4e6f1" stroke="#333" stroke-width="1"/>
+    <!-- API Gateway -->
+    <rect x="965" y="440" width="10" height="80" fill="#fdebd0" stroke="#e67e22" stroke-width="1"/>
+    <!-- Lambda -->
+    <rect x="1120" y="460" width="10" height="40" fill="#d5f5e3" stroke="#27ae60" stroke-width="1"/>
+    <!-- Server StatusService -->
+    <rect x="1240" y="470" width="10" height="20" fill="#d5f5e3" stroke="#27ae60" stroke-width="1"/>
+
+    <!-- ===== MESSAGES ===== -->
+
+    <!-- 1: PostStatus -> Presenter: submitPost(authToken, currentUser, post) -->
+    <line x1="95" y1="100" x2="260" y2="100" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="178" y="95" text-anchor="middle" font-size="11" fill="#333">submitPost(authToken, currentUser, post)</text>
+
+    <!-- 2: Presenter -> PostStatus: setIsLoading(true) -->
+    <line x1="260" y1="140" x2="95" y2="140" stroke="#333" stroke-width="1.5" marker-end="url(#arrowLeft)"/>
+    <text x="178" y="135" text-anchor="middle" font-size="11" fill="#333">setIsLoading(true)</text>
+
+    <!-- 3: Presenter -> PostStatus: displayInfoMessage("Posting status...", 0) -->
+    <line x1="260" y1="180" x2="95" y2="180" stroke="#333" stroke-width="1.5" marker-end="url(#arrowLeft)"/>
+    <text x="178" y="175" text-anchor="middle" font-size="11" fill="#333">displayInfoMessage("Posting status...", 0)</text>
+
+    <!-- 4: Presenter creates Status -->
+    <rect x="200" y="210" width="130" height="30" rx="3" fill="#fff3cd" stroke="#856404" stroke-width="1"/>
+    <text x="265" y="230" text-anchor="middle" font-size="10" fill="#856404">new Status(post, user, now)</text>
+
+    <!-- Note: async boundary -->
+    <rect x="130" y="265" width="100" height="22" rx="3" fill="#e8e8e8" stroke="#aaa" stroke-width="1"/>
+    <text x="180" y="280" text-anchor="middle" font-size="10" font-style="italic" fill="#666">async / await</text>
+
+    <!-- 5: Presenter -> StatusService: postStatus(authToken, status) -->
+    <line x1="270" y1="320" x2="435" y2="320" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="352" y="315" text-anchor="middle" font-size="11" fill="#333">postStatus(authToken, status)</text>
+
+    <!-- 6: StatusService -> ServerFacade: postStatus(authToken, status) -->
+    <line x1="445" y1="360" x2="610" y2="360" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="528" y="355" text-anchor="middle" font-size="11" fill="#333">postStatus(authToken, status)</text>
+
+    <!-- 7: ServerFacade -> ClientCommunicator: doPost(request, "/status/post") -->
+    <line x1="620" y1="400" x2="790" y2="400" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="705" y="395" text-anchor="middle" font-size="11" fill="#333">doPost(request, "/status/post")</text>
+
+    <!-- 8: ClientCommunicator -> API Gateway: HTTP POST /status/post -->
+    <line x1="800" y1="440" x2="965" y2="440" stroke="#e67e22" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="6,3"/>
+    <text x="882" y="435" text-anchor="middle" font-size="11" fill="#e67e22" font-weight="bold">HTTP POST /status/post</text>
+
+    <!-- 9: API Gateway -> Lambda: handler(event) -->
+    <line x1="975" y1="460" x2="1120" y2="460" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="1048" y="455" text-anchor="middle" font-size="11" fill="#27ae60">handler(event)</text>
+
+    <!-- 10: Lambda -> Server StatusService: postStatus(token, statusDto) -->
+    <line x1="1130" y1="475" x2="1240" y2="475" stroke="#27ae60" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="1185" y="470" text-anchor="middle" font-size="10" fill="#27ae60">postStatus(token, statusDto)</text>
+
+    <!-- 11: Server StatusService -> Lambda: return void -->
+    <line x1="1240" y1="490" x2="1130" y2="490" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowLeft)"/>
+    <text x="1185" y="505" text-anchor="middle" font-size="10" fill="#999">void</text>
+
+    <!-- 12: Lambda -> API Gateway: {success: true, message: null} -->
+    <line x1="1120" y1="520" x2="975" y2="520" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowLeft)"/>
+    <text x="1048" y="515" text-anchor="middle" font-size="10" fill="#999">{success: true, message: null}</text>
+
+    <!-- 13: API Gateway -> ClientCommunicator: HTTP 200 Response -->
+    <line x1="965" y1="550" x2="800" y2="550" stroke="#e67e22" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrowLeft)"/>
+    <text x="882" y="545" text-anchor="middle" font-size="11" fill="#e67e22">HTTP 200 Response</text>
+
+    <!-- 14: ClientCommunicator -> ServerFacade: TweeterResponse -->
+    <line x1="790" y1="580" x2="620" y2="580" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowLeft)"/>
+    <text x="705" y="575" text-anchor="middle" font-size="10" fill="#999">TweeterResponse</text>
+
+    <!-- 15: ServerFacade -> StatusService: return void -->
+    <line x1="610" y1="610" x2="445" y2="610" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowLeft)"/>
+    <text x="528" y="605" text-anchor="middle" font-size="10" fill="#999">void</text>
+
+    <!-- 16: StatusService -> Presenter: return void -->
+    <line x1="435" y1="640" x2="270" y2="640" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowLeft)"/>
+    <text x="352" y="635" text-anchor="middle" font-size="10" fill="#999">void</text>
+
+    <!-- 17: Presenter -> PostStatus: setPost("") -->
+    <line x1="260" y1="690" x2="95" y2="690" stroke="#333" stroke-width="1.5" marker-end="url(#arrowLeft)"/>
+    <text x="178" y="685" text-anchor="middle" font-size="11" fill="#333">setPost("")</text>
+
+    <!-- 18: Presenter -> PostStatus: displayInfoMessage("Status posted!", 2000) -->
+    <line x1="260" y1="730" x2="95" y2="730" stroke="#333" stroke-width="1.5" marker-end="url(#arrowLeft)"/>
+    <text x="178" y="725" text-anchor="middle" font-size="11" fill="#333">displayInfoMessage("Status posted!", 2000)</text>
+
+    <!-- finally block label -->
+    <rect x="200" y="770" width="80" height="22" rx="3" fill="#e8e8e8" stroke="#aaa" stroke-width="1"/>
+    <text x="240" y="785" text-anchor="middle" font-size="10" font-style="italic" fill="#666">finally block</text>
+
+    <!-- 19: Presenter -> PostStatus: deleteMessage(toastId) -->
+    <line x1="260" y1="810" x2="95" y2="810" stroke="#333" stroke-width="1.5" marker-end="url(#arrowLeft)"/>
+    <text x="178" y="805" text-anchor="middle" font-size="11" fill="#333">deleteMessage(toastId)</text>
+
+    <!-- 20: Presenter -> PostStatus: setIsLoading(false) -->
+    <line x1="260" y1="840" x2="95" y2="840" stroke="#333" stroke-width="1.5" marker-end="url(#arrowLeft)"/>
+    <text x="178" y="835" text-anchor="middle" font-size="11" fill="#333">setIsLoading(false)</text>
+
+    <!-- Legend -->
+    <rect x="20" y="870" width="400" height="40" rx="5" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+    <rect x="30" y="880" width="30" height="3" fill="#333"/>
+    <text x="70" y="886" font-size="10" fill="#333">Solid = call</text>
+    <line x1="130" y1="882" x2="160" y2="882" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="170" y="886" font-size="10" fill="#999">Dashed = return</text>
+    <line x1="250" y1="882" x2="280" y2="882" stroke="#e67e22" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <text x="290" y="886" font-size="10" fill="#e67e22">Orange = HTTP network call</text>
+    <rect x="30" y="893" width="12" height="12" fill="#d4e6f1" stroke="#333" stroke-width="1"/>
+    <text x="50" y="903" font-size="10" fill="#333">Client</text>
+    <rect x="100" y="893" width="12" height="12" fill="#d5f5e3" stroke="#27ae60" stroke-width="1"/>
+    <text x="120" y="903" font-size="10" fill="#27ae60">Server</text>
+    <rect x="190" y="893" width="12" height="12" fill="#fdebd0" stroke="#e67e22" stroke-width="1"/>
+    <text x="210" y="903" font-size="10" fill="#e67e22">API Gateway</text>
+  </svg>
+</body>
+</html>

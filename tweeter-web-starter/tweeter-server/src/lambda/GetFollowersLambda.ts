@@ -1,11 +1,12 @@
 import { PagedUserItemRequest, PagedUserItemResponse } from "tweeter-shared";
 import { FollowService } from "../model/service/FollowService";
+import { DynamoDAOFactory } from "../model/dao/dynamodb/DynamoDAOFactory";
 
 export const handler = async (
   event: PagedUserItemRequest
 ): Promise<PagedUserItemResponse> => {
   try {
-    const followService = new FollowService();
+    const followService = new FollowService(new DynamoDAOFactory());
     const [items, hasMore] = await followService.loadMoreFollowers(
       event.token,
       event.userAlias,

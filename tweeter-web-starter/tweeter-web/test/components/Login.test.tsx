@@ -7,6 +7,16 @@ import { LoginPresenter } from "../../src/presenter/LoginPresenter";
 import { instance, mock, verify, anything } from "ts-mockito";
 import { MemoryRouter } from "react-router-dom";
 
+// Suppress console.error/warn for missing FontAwesome icons and React warnings
+beforeAll(() => {
+  jest.spyOn(console, "error").mockImplementation(() => {});
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+});
+afterAll(() => {
+  (console.error as jest.Mock).mockRestore();
+  (console.warn as jest.Mock).mockRestore();
+});
+
 // Mock the hooks
 jest.mock("../../src/components/userInfo/UserHooks", () => ({
   useUserInfoActions: () => ({
